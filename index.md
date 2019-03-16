@@ -4,4 +4,4 @@
 
 layout: home
 ---
-{{hello WORLD | capitalize}}
+{{ "hello world" | capitalize }}
