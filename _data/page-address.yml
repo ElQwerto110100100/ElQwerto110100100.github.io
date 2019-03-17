@@ -1,0 +1,7 @@
+pages:
+
+  - title: home
+    url: index
+
+  - title: About
+    url: about

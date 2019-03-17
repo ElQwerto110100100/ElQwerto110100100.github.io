@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="stylesheet" href="/assets/mystyle.css">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>meme</title>
+  </head>
+  <body>
+
+<!-- centering main content -->
+    <div style="margin-left: 200px; padding-left: 5px; padding-right: 5vw;>
+      {% include header-template.html %}
+      {{ content }}
+    </div>
+
+      <div class="sidenav">
+        {% for item in site.data.page-address.pages %}
+            <a href="{{ item.url }}">{{ item.title }}<a/>
+        {% endfor %}
+      </div>
+
+  </body>
+</html>

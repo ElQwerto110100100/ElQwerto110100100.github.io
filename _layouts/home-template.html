@@ -1,0 +1,11 @@
+---
+layout: website-template
+---
+
+<div style="text-align: center;">
+
+{% for post in site.posts %}
+    <a class="post-link" href="{{ post.url }}"> {{ post.title }} </a>
+{% endfor %}
+
+</div>
