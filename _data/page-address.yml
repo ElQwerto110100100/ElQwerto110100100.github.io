@@ -1,7 +1,7 @@
 pages:
 
   - title: home
-    url: index
+    path: /
 
   - title: About
-    url: about
+    path: /about
