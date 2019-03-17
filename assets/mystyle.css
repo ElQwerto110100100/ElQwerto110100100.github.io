@@ -1,3 +1,14 @@
+.older-posts {
+  border-width: thin;
+  border-style: dotted;
+  border-color: grey;
+}
+
+.contentPos {
+  margin-left: 200px;
+  padding-left: 5px;
+  padding-right: 5vw;
+}
 
 .sidenav {
   text-align: right;
