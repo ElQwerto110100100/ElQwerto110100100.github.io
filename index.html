@@ -6,5 +6,9 @@ layout: home-template
   {% for post in site.posts %}
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
+
+      <small>
+        {{ post.date | date_to_string }} | Read time: {{ content | reading_time_as_i }} | {{ post | tags }}
+      </small>
   {% endfor %}
 </div>
