@@ -8,8 +8,13 @@ layout: home-template
       {{ post.excerpt | truncate: 300 }}
       <div>
         <small>
-          {{ post.date | date_to_string }} | Tags: {{ post | tags }} | Read time: {% include read-time.html content=content %}
+          {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %}
+            {% for tag in post.tags %}
+              {% capture tag_name %}{{ tag }}{% endcapture %}
+              <a href="/tag/{{ tag_name }}">{{ tag_name }}</a>
+            {% endfor %}
         </small>
       </div>
+
   {% endfor %}
 </div>
