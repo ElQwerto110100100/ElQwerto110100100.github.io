@@ -1,11 +1,10 @@
 ---
 layout: home-template
 ---
-{% for post in site.posts %}
+
 <div class="postPreview">
-
-    <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
-    {{ post.excerpt | truncate: 300 }}
-
+  {% for post in site.posts %}
+      <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
+      {{ post.excerpt | truncate: 300 }}
+  {% endfor %}
 </div>
-{% endfor %}
