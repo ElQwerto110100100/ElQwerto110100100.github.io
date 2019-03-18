@@ -8,7 +8,7 @@ layout: home-template
       {{ post.excerpt | truncate: 300 }}
       <div>
         <small>
-          {{ post.date | date_to_string }} | Read time: {{ content | reading_time_as_s }}
+          {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %}
         </small>
       </div>
   {% endfor %}
