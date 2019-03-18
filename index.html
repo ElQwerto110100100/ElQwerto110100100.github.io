@@ -8,6 +8,6 @@ layout: home-template
     {{ post.excerpt | truncate: 300 }}
     <a class="read-more" href="{{ post.url }}">»</a>
 
-    {{ post.date | date_to_string }} | {{ post | tags }}
+    {{ post | tags }}
 </div>
 {% endfor %}
