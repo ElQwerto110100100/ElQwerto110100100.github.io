@@ -7,6 +7,8 @@ layout: home-template
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
 
-
+      <small>
+        {{ post.date | date_to_string }} | {{ post | tags }}
+      </small>
   {% endfor %}
 </div>
