@@ -36,6 +36,8 @@ GEM
       jekyll (~> 3.3)
     jekyll-tagging (1.1.0)
       nuggets
+    jekyll-time-to-read (0.1.2)
+      jekyll
     jekyll-watch (2.1.2)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -78,6 +80,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-paginate
   jekyll-tagging
+  jekyll-time-to-read
   minima (~> 2.0)
   tzinfo-data
   wdm (~> 0.1.0)
