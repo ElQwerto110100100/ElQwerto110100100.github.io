@@ -10,7 +10,7 @@ layout: home-template
 
     <div>
       <small>
-        {{ post | tags }}
+        {{ post.date | date_to_string }} | Read time: {{ content | reading_time_as_i }}
       </small>
     </div>
 
