@@ -9,7 +9,9 @@ layout: home-template
     <a class="read-more" href="{{ post.url }}">»</a>
 
     <div>
-        Read time: {{ content | reading_time_as_i }} | {{ post | tags }}
+      <small>
+        {{ post | tags }}
+      </small>
     </div>
 
 </div>
