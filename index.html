@@ -2,5 +2,17 @@
 layout: home-template
 ---
 {% for post in site.posts %}
-  
+<div class="postPreview">
+
+    <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
+    {{ post.excerpt | truncate: 300 }}
+    <a class="read-more" href="{{ post.url }}">»</a>
+
+    <div class="">
+      <small>
+        {{ post.date | date_to_string }} | Read time: {{ content | reading_time_as_i }} | {{ post | tags }}
+      </small>s
+    </div>
+
+</div>
 {% endfor %}
