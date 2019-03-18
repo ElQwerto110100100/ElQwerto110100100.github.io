@@ -16,7 +16,7 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
   gem "jekyll-paginate"
   gem "jekyll-tagging"
-  gem "jekyll-time-to-read"
+#  gem "jekyll-time-to-read" dosnt work for github
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
