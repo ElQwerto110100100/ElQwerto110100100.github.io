@@ -7,8 +7,8 @@
 
     <div>
       <small>
-        {{ post.date | date_to_string }} | Read time: {{ content | reading_time_as_i }} | {{ post | tags }}
-      </small>s
+        {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %} | {{ post | tags }}
+      </small>
     </div>
 
 </div>
