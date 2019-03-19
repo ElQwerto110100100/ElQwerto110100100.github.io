@@ -1,9 +1,8 @@
 ---
 layout: home-template
 ---
-
+{% for post in site.posts %}
 <div class="postPreview">
-  {% for post in site.posts %}
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
       <div>
@@ -14,6 +13,5 @@ layout: home-template
             {% endfor %}
         </small>
       </div>
-
-  {% endfor %}
 </div>
+{% endfor %}
