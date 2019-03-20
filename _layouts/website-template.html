@@ -21,10 +21,8 @@
   </div>
 
     <div class="contentPos">
-      {% include header-template.html %}
-      {{ content }}
       <!-- tag cloud -->
-      <div class="tagCloud">
+      <div class="contentPos tagCloud">
         {% capture temptags %}
           {% for tag in site.tags %}
             {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
@@ -37,6 +35,8 @@
           <a href="/tag/{{ tagname }}.html"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code></a>
         {% endfor %}
       </div>
+      {% include header-template.html %}
+      {{ content }}
     </div>
 
   <div class="parallax">
