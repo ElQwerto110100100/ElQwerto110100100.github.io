@@ -13,7 +13,6 @@ layout: home-template
     animation-delay: 1s;
   }
 </style>
-
 {% for post in paginator.posts %}
 <div class="animated fadeInLeft delay-{% if forloop.index != 1 %}{{ forloop.index | minus:1 }}{% endif %}s postPreview">
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
@@ -28,7 +27,6 @@ layout: home-template
       </div>
 </div>
 {% endfor %}
-
 <div class="pagination">
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path }}" class="next">Back</a>
