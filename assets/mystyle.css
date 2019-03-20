@@ -1,3 +1,17 @@
+* {
+  font-family: 'Nunito', sans-serif;
+/*  font-family: 'Archivo', sans-serif;
+  font-family: 'Exo 2', sans-serif;
+  font-family: "Courier New", Courier, monospace;
+  font-family: "Merriweather", serif; */
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 90px
+}
+
 body {
     width: 100%;
     height: auto;
@@ -6,6 +20,15 @@ body {
     font-family: Calibri, Georgia, Ubuntu-C;
     font-size: 16px;
     margin-bottom: 20PX
+}
+
+.centered {
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .parallax {
