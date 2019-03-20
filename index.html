@@ -1,8 +1,9 @@
 ---
 layout: home-template
 ---
+
 {% for post in site.posts %}
-<div class="postPreview">
+<div class="animated fadeInLeft postPreview">
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
       <div>

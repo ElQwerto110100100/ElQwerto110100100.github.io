@@ -8,10 +8,6 @@ body {
     margin-bottom: 20PX
 }
 
-.w3-animate-top {
-
-}
-
 .parallax {
   /* The image used */
   background-image: url("img/bg-img2.jpg");
@@ -26,7 +22,6 @@ body {
 }
 
 .postPreview {
-  overflow-y: hidden;
   text-align: left;
 }
 
