@@ -8,13 +8,16 @@ body {
     margin-bottom: 20PX
 }
 
+.w3-animate-top {
+
+}
+
 .parallax {
   /* The image used */
   background-image: url("img/bg-img2.jpg");
   /* Set a specific height */
   width: 100%;
-  height: 25vh;
-
+  height: 50vh;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -23,6 +26,7 @@ body {
 }
 
 .postPreview {
+  overflow-y: hidden;
   text-align: left;
 }
 
@@ -42,6 +46,7 @@ body {
 }
 
 .sidenav {
+
   text-align: right;
   height: 100%;
   width: 200px;
