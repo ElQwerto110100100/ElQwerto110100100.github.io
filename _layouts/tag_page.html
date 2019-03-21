@@ -3,7 +3,7 @@ layout: home-template
 ---
 {% for post in page.posts %}
   {% include tag-cloud.html %}
-  <div class="animated fadeInLeft postPreview" style="position: relative; animation-delay:{% if forloop.index != 1 %}{{ forloop.index | minus: 1 | divided_by: 3.0 }}{% endif %}s">
+  <div class="animated fadeInLeft" style="position: relative; animation-delay:{% if forloop.index != 1 %}{{ forloop.index | minus: 1 | divided_by: 3.0 }}{% endif %}s">
 
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
