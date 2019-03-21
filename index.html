@@ -1,20 +1,9 @@
 ---
 layout: home-template
 ---
-<!-- customszed the delay times -->
-<style>
-  .animated.delay-1s {
-    animation-delay: 0.3s;
-  }
-  .animated.delay-2s {
-    animation-delay: 0.6s;
-  }
-  .animated.delay-3s {
-    animation-delay: 1s;
-  }
-</style>
+
 {% for post in paginator.posts %}
-<div class="animated fadeInLeft delay-{% if forloop.index != 1 %}{{ forloop.index | minus:1 }}{% endif %}s postPreview">
+<div class="animated fadeInLeft postPreview" style="animation-delay:{% if forloop.index != 1 %}{{ forloop.index | minus: 1 | divided_by: 3.0 }}{% endif %}s ">
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
       {{ post.excerpt | truncate: 300 }}
       <div>
