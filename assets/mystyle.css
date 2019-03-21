@@ -91,6 +91,8 @@ body {
 }
 
 .tagCloud {
+  padding-right: 5vw;
+  padding-top: 60px;
   height: 100px;
   margin: 0;
   text-align: right;
