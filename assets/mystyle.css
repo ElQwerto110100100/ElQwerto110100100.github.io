@@ -1,3 +1,133 @@
+/* deactivated version */
+.unactive-box {
+  position: relative;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  background-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.unactive-box::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.unactive-box:hover {
+}
+
+.unactive-box:hover::after {
+}
+
+.unactive-box h2 {
+  margin: 0;
+}
+
+.unactive-box a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+.unactive-box:hover {
+  color: #000;
+}
+
+.unactive-box:before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 2px;
+  bottom: 0;
+  left: 10%;
+  background-color: #000;
+}
+
+.unactive-box:hover:before {
+}
+
+/* underline anaimtion */
+.box h2 {
+  margin: 0;
+}
+
+.box a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+.box:hover {
+  color: #000;
+}
+
+.box:before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 2px;
+  bottom: 0;
+  left: 10%;
+  background-color: #000;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.box:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+/* box transform */
+.box {
+  position: relative;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box:hover {
+  -webkit-transform: scale(1.25, 1.25);
+  transform: scale(1.25, 1.25);
+}
+
+.box:hover::after {
+    opacity: 1;
+}
+
 * {
   font-family: 'Nunito', sans-serif;
 /*  font-family: 'Archivo', sans-serif;
