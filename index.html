@@ -1,6 +1,8 @@
 ---
 layout: home-template
 ---
+{% include tag-cloud.html %}
+
 {% for post in paginator.posts %}
 <div class="animated fadeInLeft postPreview" style="animation-delay:{% if forloop.index != 1 %}{{ forloop.index | minus: 1 | divided_by: 3.0 }}{% endif %}s ">
       <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>

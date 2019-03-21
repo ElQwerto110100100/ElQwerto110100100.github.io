@@ -2,5 +2,6 @@
 layout: home-template
 ---
 {% for post in page.posts %}
+  {% include tag-cloud.html %}
     {% include post-gen.html %}
 {% endfor %}
