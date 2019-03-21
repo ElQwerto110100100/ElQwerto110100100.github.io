@@ -3,5 +3,17 @@ layout: home-template
 ---
 {% for post in page.posts %}
   {% include tag-cloud.html %}
-  {% include post-gen.html %}
+  <div class="animated fadeInLeft postPreview" style="position: relative; animation-delay:{% if forloop.index != 1 %}{{ forloop.index | minus: 1 | divided_by: 3.0 }}{% endif %}s">
+
+      <a class="post-title" href="{{ post.url }}"> {{ post.title }} </a>
+      {{ post.excerpt | truncate: 300 }}
+      <a class="read-more" href="{{ post.url }}">»</a>
+
+      <div>
+        <small>
+          {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %} | {{ post | tags }}
+        </small>
+      </div>
+
+  </div>
 {% endfor %}
