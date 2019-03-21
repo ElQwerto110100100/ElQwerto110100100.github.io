@@ -1,6 +1,5 @@
 <!-- tag cloud -->
 <div class="tagCloud">
-  <h2>Tag cloud</h2>
   {% capture temptags %}
     {% for tag in site.tags %}
       {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
