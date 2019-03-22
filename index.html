@@ -18,24 +18,24 @@ layout: home-template
 </div>
 {% endfor %}
 
-  {% if paginator.previous_page %}
-    <div class="box">
-      <h2><a href="{{ paginator.previous_page_path }}">Back</a></h2>
-    </div>
-  {% else %}
-    <div class="unactive-box">
-      <h2>Back</h2>
-    </div>
-  {% endif %}
+{% if paginator.next_page %}
+  <div class="box" style="margin-left: 100px;">
+    <h2><a href="{{ paginator.next_page_path }}">Next</a></h2>
+  </div>
+{% else %}
+  <div class="unactive-box" style="margin-left: 100px;">
+    <h2>Next</h2>
+  </div>
+{% endif %}
 
-    {{ paginator.page }} of {{ paginator.total_pages }}
+<div style="text-align: center">{{ paginator.page }} of {{ paginator.total_pages }}</div>
 
-    {% if paginator.next_page %}
-      <div class="box">
-        <h2><a href="{{ paginator.next_page_path }}">Next</a></h2>
-      </div>
-    {% else %}
-    <div class="unactive-box">
-      <h2>Next</h2>
-    </div>
-    {% endif %}
+{% if paginator.previous_page %}
+  <div class="box" style="margin-right: 100px;">
+    <h2><a href="{{ paginator.previous_page_path }}">Back</a></h2>
+  </div>
+{% else %}
+  <div class="unactive-box" style="margin-right: 100px;">
+    <h2>Back</h2>
+  </div>
+{% endif %}

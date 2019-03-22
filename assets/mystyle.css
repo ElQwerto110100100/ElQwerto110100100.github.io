@@ -4,7 +4,7 @@
   display: inline-block;
   width: inherit;
   height: inherit;
-  background-color: #000;
+  background-color: #f2f2f2;
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -38,17 +38,9 @@
 }
 
 .unactive-box:hover {
-  color: #000;
 }
 
 .unactive-box:before {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 2px;
-  bottom: 0;
-  left: 10%;
-  background-color: #000;
 }
 
 .unactive-box:hover:before {
