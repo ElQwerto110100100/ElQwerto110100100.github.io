@@ -1,12 +1,11 @@
 ---
 layout: website-template
 ---
-<div class="profile-pic">
-  <img class="animated zoomIn top-left-img" src="/assets/img/pp-img-top-left.png" alt="">  <img class="animated zoomIn top-right-img" src="/assets/img/pp-img-top-right.png" alt="">
-  <img class="animated zoomIn bottom-left-img" src="/assets/img/pp-img-bottom-left.png" alt="">  <img class="animated zoomIn bottom-right-img" src="/assets/img/pp-img-bottom-right.png" alt="">
-</div>
+<title>{{ page.title }}</title>
 
-<div>
-  {{ page.title }}
+  {% include profile-pic.html %}
+
+<div style="float: left; width: 70%">
+  <h2 style="font-weight:bold">{{ page.title }}</h2>
   {{ content }}
 </div>

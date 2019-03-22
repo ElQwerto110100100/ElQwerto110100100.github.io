@@ -49,8 +49,9 @@ body {
 }
 
 .profile-pic {
+  float: left;
   height: 400px;
-  width: 400px;
+  width: 350px;
 }
 
 .profile-pic img {
