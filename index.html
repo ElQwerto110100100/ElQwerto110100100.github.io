@@ -28,7 +28,9 @@ layout: home-template
   </div>
 {% endif %}
 
-<div style="text-align: center">{{ paginator.page }} of {{ paginator.total_pages }}</div>
+<div style="text-align: center">
+  {{ paginator.page }} of {{ paginator.total_pages }}
+</div>
 
 {% if paginator.previous_page %}
   <div class="box" style="margin-right: 100px;">
