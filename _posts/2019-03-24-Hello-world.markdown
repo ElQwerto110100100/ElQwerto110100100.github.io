@@ -8,5 +8,5 @@ This will help me stay motivated on my task and as a place of reference when I n
 
 Hope you enjoy and learn something from this blog.
 
-![](hello-world.gif)
+![image](hello-world.gif)
 (gif taken from here: https://medium.com/@cindyk09/the-history-of-hello-world-6b159a55cde1)
