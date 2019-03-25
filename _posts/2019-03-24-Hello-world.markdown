@@ -11,5 +11,4 @@ Hope you enjoy and learn something from this blog.
 
 ![](assets\img\emoji\hello-world.gif)
 
-
 (gif taken from here: https://medium.com/@cindyk09/the-history-of-hello-world-6b159a55cde1)
