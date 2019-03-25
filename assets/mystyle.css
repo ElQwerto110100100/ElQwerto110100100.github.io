@@ -82,6 +82,14 @@ body {
   background-size: cover;
 }
 
+.postContent {
+  padding-left: 20px;
+}
+
+.postContent img {
+
+}
+
 .postPreview {
   text-align: left;
   padding-bottom: 30px;
