@@ -86,8 +86,12 @@ body {
   padding-left: 20px;
 }
 
-.postContent img {
+.postContent h1 {
+  font-weight:bold;
+}
 
+.postContent img {
+  padding-right: 100%;
 }
 
 .postPreview {

@@ -3,14 +3,14 @@ layout: website-template
 author: "Joshua 'ElQwerto' Hoban"
 ---
 <div class="postContent">
-  <span>[
+  <span style="padding-bottom: 20px">[
     {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}
       <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
     {% endfor %}
   ]</span>
 
-<h2>{{ content.title }}</h2>
+<h1>{{ page.title }}</h1>
 {{ content }}
 
 </div>
