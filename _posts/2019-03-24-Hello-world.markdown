@@ -8,5 +8,5 @@ This will help me stay motivated on my task and as a place of reference when I n
 
 Hope you enjoy and learn something from this blog.
 
-![image](hello-world.gif)
+![image](/assets/img/emoji/hello-world.gif)
 (gif taken from here: https://medium.com/@cindyk09/the-history-of-hello-world-6b159a55cde1)
