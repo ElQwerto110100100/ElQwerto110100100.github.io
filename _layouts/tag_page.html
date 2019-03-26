@@ -11,7 +11,10 @@ layout: home-template
 
       <div>
         <small>
-          {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %} | {{ post | tags }}
+          {{ post.date | date_to_string }} | Read time: {% include read-time.html content=content %} |
+        </small>
+        <small class="tag">
+          {{ post | tags }}
         </small>
       </div>
 
