@@ -109,4 +109,51 @@ what is the process of get_long() function?:
 >
 >4) Adds current character from 'c' variable to 'l' variable. ('c' is minus by '0' because 'c' is a char it needs to be converted to a int for 'l' to accept it)
 
-After awhile of going around in circles in research and looking on the plaza forum, I started to get a sense of where to go. Because 'l' is a 8 byte variable putting 8 byte data into a 4 byte variable, has to have problems surrounding that. I came across information like two's complement and integer overflows. Now while I did know of these problems and had a feeling that this was going to be a problem from the start. I was still struggling because I didn't understand why it wouldn't cause such problems when I try to exploit them in the challenge.
+After awhile of going around in circles in research and looking on the plaza forum, I started to get a sense of where to go. Because 'l' is a 8 byte variable putting 8 byte data into a 4 byte variable, has to have problems surrounding that. I came across information like two's complement and integer overflows. Now while I did know of these problems and had a feeling that this was the answer from the start. I was still wasn't sure because I didn't understand why it wouldn't cause such problems when I try to exploit them in the challenge.
+
+Turns out after the challenge I found out why my testing code didn't give me the results I needed. here is my code (modified for demonstration) I used to test the size of long and to figure out how to break it:
+
+``` c
+long cash = ULONG_MAX;
+uint64_t l = LONG_MAX;
+//bit too diffcult to print out max value of uint64_t
+printf("%lu \n",ULONG_MAX); //outputs 4294967295
+printf("%lu \n",LONG_MAX ); //outputs 2147483647
+printf("%li \n",cash ); //outputs -1 with long signed notation
+printf("%lu \n",cash ); //outputs 294967295 with long unsigned notation
+printf("%lu \n",l );
+```
+(I'm not 100% confident in this answer but it makes the most sense to me. will edit if I learn more.)
+I was using a unsigned long's maximum not uint64_t maximum like I thoughted and this website [here](https://caligari.dartmouth.edu/doc/ibmcxx/en_US/doc/complink/ref/rucl64mg.htm).Help show that ULONG_MAX is the same as LONG_MAX in size but the first bit is used as a number not a sign.
+
+If you take the binary of ULONG_MAX which equals to 4294967295.
+
+>byte 1: 11111111
+>
+>byte 2: 11111111
+>
+>byte 3: 11111111
+>
+>byte 4: 11111111
+
+If you take the binary of LONG_MAX which equals to +2147483647.
+
+>byte 1: 01111111
+>
+>byte 2: 11111111
+>
+>byte 3: 11111111
+>
+>byte 4: 11111111
+
+Previously I was using the string format %lu (long unsigned notation) to print out the result which is why I was confuse that variable long 'cash' seemed like it could take in more than 2147483647 BUT, (I only did this after solved the challenge) when you plus 1 to the long "cash" variable in my test, if it equal to LONG_MAX or ULONG_MAX it throws an error regardless in the compiler or outputs differently in printf(). it wasn't that the long variable could hold more than LONG_MAX it was just viewing it differently.
+
+So to some of you this is completely obvious and you would know this already. It was a silly mistake that I only realised and fully understood after the challenge. But this blog demonstrates my learning in all its messiness, it happens to everyone ¯\_(ツ)_/¯.
+
+So we know this now but during the challenge I was so confused and frustrated at why I couldn't cause the integer overflow I understood why but didn't understand the how. so shamefully I kind of conceded a little bit on my commitment to not look up a walkthrough for the answer. What I did was I looked only to the part about where it demonstrated the integer overflow all the person did was...
+
+2147483647 + 1 and put in 2147483648. which gave the result of the bet 0...
+
+![facepalm](/assets\img\emoji\Captain-Picard-Facepalm.jpg)
+
+So why does that work but not 99999999999999999999? yet again I only found out why after the challenge was solved

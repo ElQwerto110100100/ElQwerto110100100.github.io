@@ -87,6 +87,18 @@ body {
   padding-bottom: 30px;
 }
 
+.postContent a {
+  color: #6990CF
+}
+
+.postContent a:visited {
+  color: #6990CF
+}
+
+.postContent a:hover {
+  color: #384C6E
+}
+
 .post-title {
   color: #4A4A4A;
   font-weight: bolder;

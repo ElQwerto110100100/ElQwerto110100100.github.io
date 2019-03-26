@@ -2,7 +2,7 @@
 layout: website-template
 author: "Joshua 'ElQwerto' Hoban"
 ---
-<div class="animated fadeIn" style="padding-left: 20px">
+<div class="animated fadeIn " style="padding-left: 20px">
   <span style="padding-bottom: 20px">[
     {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}
@@ -12,7 +12,8 @@ author: "Joshua 'ElQwerto' Hoban"
     {% endfor %}
   ]</span>
 
-<h1 style="font-size: 60px; font-weight: bold;">{{ page.title }}</h1>
-{{ content }}
-
+  <h1 style="font-size: 60px; font-weight: bold;">{{ page.title }}</h1>
+  <div class="postContent">
+    {{ content }}
+  </div>
 </div>
