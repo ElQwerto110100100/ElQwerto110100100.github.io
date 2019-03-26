@@ -15,7 +15,7 @@ the hint given was there were "two bugs to find".
 With any CTF challenge I struggle to stay committed to it, putting in the time and not give up by looking at writeups online. So this time I was committed to not taking any shortcuts.
 I looked at the source code, thought the best place to start would be to look at where the user input is needed, where it goes and see what I can control.
 
-here is a snippet of the main() function.
+Here is a snippet of the main() function.
 
  ``` c
   long bet;
@@ -27,9 +27,8 @@ here is a snippet of the main() function.
       puts("");
 
       play_roulette(choice, bet);
-
  ```
-So two things it needs from user is the bet and what number they pick. I also take a quick look at what I need to consider to get the flag so here are the win conditions of the main function.
+So two things it needs from user is, the bet and what number they pick. I also take a quick look at what I need to consider to get the flag so here are the win conditions of the main function.
 
  ``` c
  if(cash > ONE_BILLION) {
@@ -42,7 +41,7 @@ So two things it needs from user is the bet and what number they pick. I also ta
 puts("Wait a second... You're not even on a hotstreak! Get out of here cheater!");
 exit(-1);
  ```
-The (HOTSTREAK = 3) so I need to have won three games before I get one billion (becomes a interesting factor of the next bug), so this challenge seems to be messing with numbers stored and the way to win. First lets look at the get_bet() function.
+The (HOTSTREAK = 3) so I need to win three games before I get one billion (becomes a interesting factor of the next bug), so this challenge seems to be messing with way numbers are stored and the way to win. First lets look at the get_bet() function.
 
 ``` c
 long get_bet() {
@@ -58,7 +57,7 @@ long get_bet() {
   }
 }
 ```
-Nothing seems breakable yet however to get users input it calls get_long() and stores it in a long variable called 'bet'. lets have a look a get_long().
+Nothing seems breakable yet. However, to get users input it calls get_long() and stores it in a long variable called 'bet'. lets have a look a get_long().
 
 ``` c
 long get_long() {
@@ -81,26 +80,27 @@ long get_long() {
     return l;
 }
 ```
-Now we have a function that now makes a call to ANOTHER function which all it does is ensures each character given is indeed a number (take my word for it :p)
-So it has a uint64_t (unsigned 8 bytes integer)'l' but it returns a long (signed 4 bytes integer) value. I thought that there must be a problem here to mess with, while it maybe be obvious to some of you but, at the time I didn't understand how I could mess with this. I tried giving a big value like 99999999999999999999 but it would be able handle it by taking in every number individually and add it one at a time. I tried putting in negative numbers being that the variable 'l' was unsigned but it didn't change anything.
+Now we have a function that now makes a call to ANOTHER function is_digit() which ensures each character is a number (take my word for it :p)
+So it has a uint64_t (unsigned 8 bytes integer)'l' but it returns a long (signed 4 bytes integer) value. I thought that there must be a problem here to mess with, while it maybe be obvious to some of you. But, at the time I didn't understand how I could mess with this. I tried giving a big value like 99999999999999999999 but it would handle it by taking in every number individually and add it one at a time. I tried putting in negative numbers being that the variable 'l' was unsigned but it didn't change anything.
 
 So I then looked at the get_choice() function and it too used the get_long() function to receive users input. but there was still no way I found to abuse the problem that was defiantly here.
 
-What happened eventually while I was doing this challenge, was I went onto picoctf's 'plaza' a discussion forum to discuss challenges and help each other. At fist I was a little frustrated with myself that I had to rely on this forum but no one gave out the answer, they gave out better hints and direction so I still sort of felt like I kept to my commitment to not taking short cuts. After this a user had gave hint to the other bug in this challenge looking at how the randomness is generated and that would lead onto winning rounds in the challenge.
+What happened eventually while I was doing this challenge, was I went onto picoctf's 'plaza' a discussion forum for challenges in order to help each other. At fist I was a little frustrated with myself that I had to rely on this forum and not my own research and skills. but no one gave out the answer, they instead gave out better hints and direction. So I still sort of felt like I kept to my commitment to not taking short cuts. On this forum I found a user's hints towards one of the bugs in this challenge, At the time I thought it was the bug I was currently looking for, but I found out later it was the second bug.
 
-So now I wasn't sure that I was even looking in the right place once I read that comment. during this time I left this section in pursuit of that bug. For the sake of consistence of this blog post we will skip ahead to the point after I found that bug (ill discuss the process of that later) and continue on how I eventually solved this problem.
+During the challenge I was now unsure that I was even looking in the right place, I eventually left this section in pursuit of that bug.
 
-The second bug gave me more insight in how to analyse a problem better. The first thing was to analyse the code more carefully and the second was ...
+For the sake of consistence of this blog post we will skip ahead to the point where I return to this problem after I found that second bug (ill discuss the process of that later). The second bug gave me helpful insight in how to analyse a problem better. The first thing was to analyse the code more carefully and the second was ...
 
 ![knowledge](/assets\img\emoji\knowledge.gif)  
 (brownie points to you if you remember this dead meme)
 
-I did google and try to learn more about what I was dealing with before. But, I did not take my time with it. so the next day on this challenge I came with fresh eyes and hopped on google.
+Yes! knowledge! I did google and try to learn more about what I was dealing with before. However, I did not take my time with it. so the next day on this challenge I came with fresh eyes and hopped on google and broke down the problem.
 
-what is uint64_t datatype?: It is a unsigned (meaning the first bit of the number does not represent a positive or negative) 8 bytes (64 bits) integer with a range of 0 to
+what is uint64_t datatype?: It is a unsigned (meaning the first bit of the number does not represent a positive or negative) 8 bytes (64 bits) integer with a range of 0 to 18,446,744,073,709,551,615
 what is a long datatype?: a signed (first bit represents a positive or negative sign) 4 bytes (32 bits) integer with a range of -2,147,483,648 to 2,147,483,647
 what is LONG_MAX?: the max value of long data type 2,147,483,647.
 what is the process of get_long() function?:
+
 >1) Gets the next character with getchar() in the given string input and stores it in variable 'c'. then checks 'c' if its a digit with is_digit().
 >
 >2) Checks if the 'l' variable is >= to LONG_MAX (2,147,483,647)
@@ -124,7 +124,7 @@ printf("%lu \n",cash ); //outputs 294967295 with long unsigned notation
 printf("%lu \n",l );
 ```
 (I'm not 100% confident in this answer but it makes the most sense to me. will edit if I learn more.)
-I was using a unsigned long's maximum not uint64_t maximum like I thoughted and this website [here](https://caligari.dartmouth.edu/doc/ibmcxx/en_US/doc/complink/ref/rucl64mg.htm).Help show that ULONG_MAX is the same as LONG_MAX in size but the first bit is used as a number not a sign.
+I was using a unsigned long's maximum (ULONG_MAX) not uint64_t maximum like I thoughted and this website [here](https://caligari.dartmouth.edu/doc/ibmcxx/en_US/doc/complink/ref/rucl64mg.htm).Help show that ULONG_MAX is the same as LONG_MAX in size but the first bit is used as a number not a sign.
 
 If you take the binary of ULONG_MAX which equals to 4294967295.
 
@@ -146,11 +146,11 @@ If you take the binary of LONG_MAX which equals to +2147483647.
 >
 >byte 4: 11111111
 
-Previously I was using the string format %lu (long unsigned notation) to print out the result which is why I was confuse that variable long 'cash' seemed like it could take in more than 2147483647 BUT, (I only did this after solved the challenge) when you plus 1 to the long "cash" variable in my test, if it equal to LONG_MAX or ULONG_MAX it throws an error regardless in the compiler or outputs differently in printf(). it wasn't that the long variable could hold more than LONG_MAX it was just viewing it differently.
+Previously I was using the string format %lu (long unsigned notation) to print out the result which is why I was confuse that variable long 'cash' seemed like it could take in more than 2147483647 BUT, (I only did this after solved the challenge) it was just viewed differently.
 
-So to some of you this is completely obvious and you would know this already. It was a silly mistake that I only realised and fully understood after the challenge. But this blog demonstrates my learning in all its messiness, it happens to everyone ¯\_(ツ)_/¯.
+So to some of you this is completely obvious and you would know this already. It was a silly mistake that I only realised and fully understood after the challenge. But this blog demonstrates my learning in all its messiness, it happens. ¯\_(ツ)_/¯.
 
-So we know this now but during the challenge I was so confused and frustrated at why I couldn't cause the integer overflow I understood why but didn't understand the how. so shamefully I kind of conceded a little bit on my commitment to not look up a walkthrough for the answer. What I did was I looked ONLY to the part where it demonstrated the integer overflow (so I was correct it was a integer overflow) all the person did was...
+So we know this now but, during the challenge I was so confused and frustrated at why I couldn't cause the integer overflow, I understood why but didn't understand the how. so shamefully I kind of conceded a little bit on my commitment to not look up a walkthrough for the answer. What I did was I looked ONLY to the part where it demonstrated the integer overflow (so I was correct it was a integer overflow) all the person did was...
 
 2147483647 + 1 and put in 2147483648. which gave the result of the bet 0...
 
@@ -172,7 +172,7 @@ Have a look at the final part of the get long function again.
 ..
 ```
 
-It does the check if its larger than LONG_MAX first then extends the number by multiplying with 10 and adds the digit. the trick is because its adding every digit individually. so when we have 2147483648 once it gets up to the last digit '8' what is currently in variable 'l' is 214748364. the difference between 2147483648 and 214748364 is 1932735284. (one extra digit at the end) that's a huge difference and it doesn't check that the end only the beginning. so when there are no more characters available it then places that number inside a long variable 'bet' which cannot contain the entire number so therefore it overflows. so what I worked out is that if you 2147483647 + *what ever number you want* it will load it in the number and keep overflowing to gets to the number you added.
+It checks if its larger than LONG_MAX first then extends the number by multiplying with 10 and adds the digit. The trick is because its adding every digit individually. so when we have 2147483648, once it gets up to the last digit '8' what is currently in variable 'l' is 214748364. The difference is one less digit on the end. That's a huge difference numerically which is why its less than LONG_MAX. so when there are no more characters available it then places that number inside a long variable 'bet' which cannot contain the entire number so therefore it overflows. so what I worked out is that if you 2147483647 + *any number* it will load pass LONG_MAX value and keep overflowing until the number you added.
 
 Because of the overflow the sign bit gets set to 1 and therefore turns the number into a negative and the check function in get_bet() will allow any number that is less then your cash. once get_bet() is done next step is cash -= bet;
 If cash = 4000, then this would be 4000 - -(2147483648), negative and a negative equal a positive. however be sure not to cause this bug when you win a round as the winnings will be added by cash = bet*2 this will again overflow the integer and cause cash to become negative. also as a extra trick if you achieve over one billion before getting more then 3 wins it suspects you of cheating which is pretty funny and not hard to work around.
