@@ -227,4 +227,4 @@ And that's all there is to it. In order to receive the flag I use the prediction
 
 Thanks again for reading through my first post. It was a great benefit to me for writing it, as it made me have to figure out why what I did worked and made me realise what I originally missed. I included my mistakes in this post because its what actually happened and I shouldn't hid that. While those who are more experience reading this if they have gotten this far, :P would have not learned much.
 
-To anyone who is new to security like me, I hope you can relate to this messy post and my silly mistakes. 
+To anyone who is new to security like me, I hope you can relate to this messy post and my silly mistakes.
