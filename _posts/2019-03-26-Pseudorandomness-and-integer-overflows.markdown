@@ -150,10 +150,26 @@ Previously I was using the string format %lu (long unsigned notation) to print o
 
 So to some of you this is completely obvious and you would know this already. It was a silly mistake that I only realised and fully understood after the challenge. But this blog demonstrates my learning in all its messiness, it happens to everyone ¯\_(ツ)_/¯.
 
-So we know this now but during the challenge I was so confused and frustrated at why I couldn't cause the integer overflow I understood why but didn't understand the how. so shamefully I kind of conceded a little bit on my commitment to not look up a walkthrough for the answer. What I did was I looked only to the part about where it demonstrated the integer overflow all the person did was...
+So we know this now but during the challenge I was so confused and frustrated at why I couldn't cause the integer overflow I understood why but didn't understand the how. so shamefully I kind of conceded a little bit on my commitment to not look up a walkthrough for the answer. What I did was I looked ONLY to the part where it demonstrated the integer overflow (so I was correct it was a integer overflow) all the person did was...
 
 2147483647 + 1 and put in 2147483648. which gave the result of the bet 0...
 
 ![facepalm](/assets\img\emoji\Captain-Picard-Facepalm.jpg)
 
-So why does that work but not 99999999999999999999? yet again I only found out why after the challenge was solved
+So why does that work but not 99999999999999999999? yet again I only found out why after the challenge was solved (I'm actually figuring it out as I'm writing this).
+Have a look at the final part of the get long function again.
+
+``` c
+...
+      if(l >= LONG_MAX) {
+	l = LONG_MAX;
+	break;
+      }
+      l *= 10;
+      l += c - '0';
+      c = getchar();
+    }
+..
+```
+
+It does the check if its larger than LONG_MAX first then extends the number by multiplying with 10 and adds the digit. the trick is because its adding every digit individually. so when we have 2147483648 once it gets up to the last digit '8' what is currently in variable 'l' is 214748364. the difference between 2147483648 and 214748364 is 1932735284. that's a huge difference and it doesn't check that the end only the beginning. so when there are no more characters available it then places that number inside a long variable 'bet' which cannot contain the entire number so therefore it overflows. so what i worked out
