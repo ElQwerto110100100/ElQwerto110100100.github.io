@@ -4,7 +4,7 @@ date:   2019-03-24 20:0:0 +1100
 tags: CTF PRNG integer-overflow
 ---
 
-So finally my first actual blog post. YAY!! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+So finally my first blog post.
 
 I was doing a CTF challenge on [picoCTF2018](https://2018game.picoctf.com/game) called Roulette. The challenge's description was,
 "This Online Roulette Service is in Beta. Can you find a way to win $1,000,000,000 and get the flag? Source."
@@ -206,7 +206,7 @@ long get_rand() {
   return seed;
 }
 ```
-If you stare at this function long enough and look at the pervious code snippet, you can properly already tell how we find the see right? Easy. If your not me. I spent WAY too long on this problem, I was looking a reverse modulo, other math equations seeing if there is a way to predict /dev/urandom output (which is true random noise from firmware, meaning not predictable). I was debating with friends trying to find out how to reverse the results and get the seed.
+If you stare at this function long enough and look at the pervious code snippet, you can properly already tell how we find the seed right? Easy if your not me. I spent WAY too long on this problem, I was looking a reverse modulo, other math equations seeing if there is a way to predict /dev/urandom output (which is true random noise from firmware, meaning not predictable). I was debating with friends trying to find out how to reverse the results and get the seed.
 
 yet again the answer was simple. The get_rand() function returns the seed and uses it as the starting cash value of the program. The challenge hands it out on a silver plater and I still couldn't see it. It was trivial to write a prediction program (can been seen on my [github](https://github.com/ElQwerto110100100/hacking-scripts)) all I had to do was set the seed with srand() as the starting cash value. Then call to rand() gets the next sequence. I just had to repeat (rand() % ROULETTE_SIZE)+1; to get the spin number. However you do need to be mindful that every call to rand() moves along in the sequence.
 
