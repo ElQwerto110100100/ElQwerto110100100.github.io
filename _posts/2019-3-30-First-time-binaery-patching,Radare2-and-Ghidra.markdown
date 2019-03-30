@@ -124,6 +124,10 @@ Here is how the patching looked.
 
 [image](/assets\img\Posts\First-time-binaery-1.PNG)
 [image](/assets\img\Posts\First-time-binaery-2.PNG)
-[image](/assets\img\Posts\First-time-binaery-3.PNG)
 
-Once I applied the NOP command I got a lot of invalid input bellow it in the disassembler, which I just continued to replace with 'NOP's until it went away. Then I received my flag through my first binary patch.
+Once I applied the NOP command I got a lot of invalid input bellow it in the disassembler, which I just continued to replace with 'NOP's until it went away.
+
+[image](/assets\img\Posts\First-time-binaery-3.PNG)
+[image](/assets\img\Posts\First-time-binaery-4.PNG)
+
+Then I received my flag through my first binary patch.
