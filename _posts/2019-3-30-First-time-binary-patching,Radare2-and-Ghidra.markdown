@@ -9,13 +9,13 @@ the hint being "What will the key finally be?"
 
 The hint didn't give me much to go on nor the description. I decided to boot up my docker container and run the program locally. not much output came out all I received was this.
 
-(image)
+![image](/assets\img\Posts\First-time-binaery-0.PNG)
 
 I tried giving input before ruining it and tried typing something while it ran, but nothing happen. Based on what the hint said, maybe the key will be given or I will get something if I run it a bunch of times quickly. So I made a simple script that I thought would get something actionable.
 
 However it showed nothing different. So since it was categorized as a Reverse engineering challenge I decided to decompile with objdump, which displayed some interesting results and showed it wasn't as simple as it seems. But my experience with assembly is very limited so I couldn't understand too much of it. I then decided to see the result as it runs with gdb and get a better understand on what happens during run time. Low and behold it just spit out the flag when I ran it inside gdb.
 
-[image]()
+![image](/assets\img\Posts\First-time-binaery-0.5.PNG)
 
 Again I found the solution without understanding how I got there. I intended this post to be a proper write-up but instead I will use it as an opportunity to learn a little bit of assembly and binary patching. During Bsides2019 event I heard of a very interesting open source tool [Ghidra](https://ghidra-sre.org/) so, I will jump on the bandwagon and get to learning this interesting tool.
 
@@ -33,7 +33,6 @@ undefined8 main(void)
 }
 ```
 So lets go through each one and see what each do.
-
 header() function:
 
 ```c
@@ -120,14 +119,18 @@ void get_key(void)
 
 This explains why the flag was picoCTF{why_bother_doing_unnecessary_computation_d0c6aace}. In any case with ghidra I tried to remove the set_timer function or the alarm by replacing it with 'NOP'. But it was very finicky and didn't work, seemed other people struggled with this as well. In the end I leaned and used radare2. A program I have seen before but it was a little too intimidating to use but, this [tutorial](https://scriptdotsh.com/index.php/2018/08/13/reverse-engineering-patching-binaries-with-radare2-arm-aarch64/) helped me out a lot and I got a feel for this incredible tool.
 
-Here is how the patching looked.
+Here is how the patching looked. 
 
-[image](/assets\img\Posts\First-time-binaery-1.PNG)
-[image](/assets\img\Posts\First-time-binaery-2.PNG)
+![image](/assets\img\Posts\First-time-binaery-1.PNG)
+![image](/assets\img\Posts\First-time-binaery-2.PNG)
 
 Once I applied the NOP command I got a lot of invalid input bellow it in the disassembler, which I just continued to replace with 'NOP's until it went away.
 
-[image](/assets\img\Posts\First-time-binaery-3.PNG)
-[image](/assets\img\Posts\First-time-binaery-4.PNG)
+![image](/assets\img\Posts\First-time-binaery-3.PNG)
+![image](/assets\img\Posts\First-time-binaery-4.PNG)
 
-Then I received my flag through my first binary patch.
+Then I received my flag through my first binary patch. So why did gdb give me the flag with out all this extra steps? This [site](http://www.delorie.com/gnu/docs/gdb/gdb_39.html) explains that gdb usually silences non-error signals like SIGALARM.
+
+So while thought this wasn't really much of a write up as intentioned it was still a learning experience, to get to use these really effective tools as I have seen them used by professionals and I can defiantly see why.
+
+Thanks for reading hopefully it was intresting.
