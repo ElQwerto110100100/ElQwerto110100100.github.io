@@ -128,7 +128,9 @@ Once I applied the NOP command I got a lot of invalid input bellow it in the dis
 ![image](/assets\img\Posts\First-time-binaery-3.PNG)
 ![image](/assets\img\Posts\First-time-binaery-4.PNG)
 
-Then I received my flag through my first binary patch. So why did gdb give me the flag with out all this extra steps? This [site](http://www.delorie.com/gnu/docs/gdb/gdb_39.html) explains that gdb usually silences non-error signals like SIGALARM.
+Then I ran my patch binary and received my flag. Whoo!.
+
+So why did gdb give me the flag with out all this extra steps? This [site](http://www.delorie.com/gnu/docs/gdb/gdb_39.html) explains that gdb usually silences non-error signals like SIGALARM.
 
 So while thought this wasn't really much of a write up as intentioned it was still a learning experience, to get to use these really effective tools as I have seen them used by professionals and I can defiantly see why.
 
