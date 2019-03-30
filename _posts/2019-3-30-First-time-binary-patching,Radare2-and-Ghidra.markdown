@@ -7,7 +7,7 @@ Today I decided to do another challenge on picoCTF2018, called be-quick-or-be-de
 "You find this when searching for some music, which leads you to be-quick-or-be-dead-1. Can you run it fast enough?"
 the hint being "What will the key finally be?"
 
-The hint didn't give me much to go on nor the description. I decided to boot up my docker container and run the program locally. not much output came out all I received was this.
+The hint didn't give me much to go on nor the description. I decided to boot up my docker container and run the program locally. not much output came out, all I received was this.
 
 ![image](/assets\img\Posts\First-time-binaery-0.PNG)
 
@@ -19,7 +19,7 @@ However it showed nothing different. So since it was categorized as a Reverse en
 
 Again I found the solution without understanding how I got there. I intended this post to be a proper write-up but instead I will use it as an opportunity to learn a little bit of assembly and binary patching. During Bsides2019 event I heard of a very interesting open source tool [Ghidra](https://ghidra-sre.org/) so, I will jump on the bandwagon and get to learning this interesting tool.
 
-so upon opening this program up the import results summery showed that it was compiled with gcc which means its most likely a objective C program. Ghidra shows a C version of the assembly code, so lets use that. The best place would be to start at the main() function and go from there.
+so upon opening this program up the import results summery showed that it was compiled with gcc which means its most likely a objective C program. Ghidra shows a C source code version of the assembly code, so lets use that. The best place would be to start at the main() function and go from there.
 
 ```c
 undefined8 main(void)
@@ -52,7 +52,7 @@ void header(void)
 }
 ```
 Creates a unsigned integer "loacal_c". Prints out "Be Quick Or Be Dead 1". local_c equals to 0 then, a While loop while local_c is less than 0x15(21) and prints out 0x3d('=') then increments local_c.
-after that it returns to main (Not too interesting of a function but I want to go through every thing)
+after that it returns to main. (Not too interesting of a function but I want to go through every thing)
 
 set_timer()
 ```c
@@ -75,7 +75,8 @@ void set_timer(void)
 ```
 
 This is a bit more interesting, as the name says it sets a timer for something. lets break down its parts to see how its doing what its doing.
-after googling __sighandler_t it appears to be from a GNU C library from this [website](http://www.gnu.org/software/libc/manual/html_node/Basic-Signal-Handling.html) it is a "Basic signal Handling" function. This particular datatype is a type of signal handler that takes one integer as a signal ID and returns 'void'.
+
+After googling __sighandler_t it appears to be from a GNU C library from this [website](http://www.gnu.org/software/libc/manual/html_node/Basic-Signal-Handling.html) it is a "Basic signal Handling" function. This particular datatype is a type of signal handler that takes one integer as a signal ID and returns 'void'.
 
 Usage is demonstrated like this.
  ```c
@@ -84,9 +85,7 @@ Function: sighandler_t signal (int signum, sighandler_t action)
 
 __sysv_signal is the binary's version of signal() which is what is used in source code and demonstrated above.
 
-The 'signum' is a numerical code that indicates which signal you want to control. While the 'action' specifies the action to be used for the signal define by the 'signum'.
-
-The signum used is 0xe which must represents SIGALRM, from the discerption given in documentation says it is used by the alarm() function which is present near the return statement.
+The 'signum' is a numerical code that indicates which signal you want to control. While the 'action' specifies the action to be used for the signal define by the 'signum'. The signum used is 0xe which must represents SIGALRM, from the discerption given in documentation says it is used by the alarm() function which is present near the return statement.
 
 The action is alarm_handler which the source code for it is this.
 
@@ -117,9 +116,9 @@ void get_key(void)
 
  After looking at the other functions the calculate_key() does a pointless do while loop then sets a key to some value. The next function in main does gets the flag by decrypting it with the key and then prints it out. All this is hard to do in under a second.
 
-This explains why the flag was picoCTF{why_bother_doing_unnecessary_computation_d0c6aace}. In any case with ghidra I tried to remove the set_timer function or the alarm by replacing it with 'NOP'. But it was very finicky and didn't work, seemed other people struggled with this as well. In the end I leaned and used radare2. A program I have seen before but it was a little too intimidating to use but, this [tutorial](https://scriptdotsh.com/index.php/2018/08/13/reverse-engineering-patching-binaries-with-radare2-arm-aarch64/) helped me out a lot and I got a feel for this incredible tool.
+This explains why the flag was picoCTF{why_bother_doing_unnecessary_computation_d0c6aace}. In any case with ghidra, I tried to remove the set_timer function or the alarm by replacing it with 'NOP'. But it was very finicky and didn't work, seemed other people struggled with binary patching in ghidra as well. In the end I tried to lean and use radare2. A program I have seen before but was little too intimidating to use but, I followed this [tutorial](https://scriptdotsh.com/index.php/2018/08/13/reverse-engineering-patching-binaries-with-radare2-arm-aarch64/) and it helped me out a lot.
 
-Here is how the patching looked. 
+Here is how the patching looked.
 
 ![image](/assets\img\Posts\First-time-binaery-1.PNG)
 ![image](/assets\img\Posts\First-time-binaery-2.PNG)
@@ -133,4 +132,4 @@ Then I received my flag through my first binary patch. So why did gdb give me th
 
 So while thought this wasn't really much of a write up as intentioned it was still a learning experience, to get to use these really effective tools as I have seen them used by professionals and I can defiantly see why.
 
-Thanks for reading hopefully it was intresting.
+Thanks for reading hopefully it was interesting.
