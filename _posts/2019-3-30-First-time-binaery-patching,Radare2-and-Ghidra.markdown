@@ -120,4 +120,10 @@ void get_key(void)
 
 This explains why the flag was picoCTF{why_bother_doing_unnecessary_computation_d0c6aace}. In any case with ghidra I tried to remove the set_timer function or the alarm by replacing it with 'NOP'. But it was very finicky and didn't work, seemed other people struggled with this as well. In the end I leaned and used radare2. A program I have seen before but it was a little too intimidating to use but, this [tutorial](https://scriptdotsh.com/index.php/2018/08/13/reverse-engineering-patching-binaries-with-radare2-arm-aarch64/) helped me out a lot and I got a feel for this incredible tool.
 
+Here is how the patching looked.
+
+[image](/assets\img\Posts\First-time-binaery-1.PNG)
+[image](/assets\img\Posts\First-time-binaery-2.PNG)
+[image](/assets\img\Posts\First-time-binaery-3.PNG)
+
 Once I applied the NOP command I got a lot of invalid input bellow it in the disassembler, which I just continued to replace with 'NOP's until it went away. Then I received my flag through my first binary patch.
