@@ -103,7 +103,7 @@ void alarm_handler(void)
 ```
 The if statement is just a error checking for picoctf people so I think it can be ignored.
 
-The alarm function is set in seconds. So, in one second the 'action_handler' is used and it displays the message and stops the program. which is why the next function down below doesn't ever get to finish
+The alarm function is set in seconds. So, in one second the 'action_handler' is used and it displays the message and stops the program. which is why the next function down below doesn't ever get to finish.
 
 ```c
 void get_key(void)
@@ -116,6 +116,8 @@ void get_key(void)
 }
 ```
 
-So the answer is really simple we remove or increase the alarms allowance before stopping the program. After looking at the other functions the calculate_key() does a pointless do while loop then sets a key to some value. the next function in main does gets the flag by decrypting it with the key and then prints it out.
+ After looking at the other functions the calculate_key() does a pointless do while loop then sets a key to some value. The next function in main does gets the flag by decrypting it with the key and then prints it out. All this is hard to do in under a second.
 
-This explains why the flag was . In any case with ghidra I edit the set_timer() to have no alarm in the first place and let the program run.
+This explains why the flag was picoCTF{why_bother_doing_unnecessary_computation_d0c6aace}. In any case with ghidra I tried to remove the set_timer function or the alarm by replacing it with 'NOP'. But it was very finicky and didn't work, seemed other people struggled with this as well. In the end I leaned and used radare2. A program I have seen before but it was a little too intimidating to use but, this [tutorial](https://scriptdotsh.com/index.php/2018/08/13/reverse-engineering-patching-binaries-with-radare2-arm-aarch64/) helped me out a lot and I got a feel for this incredible tool.
+
+Once I applied the NOP command I got a lot of invalid input bellow it in the disassembler, which I just continued to replace with 'NOP's until it went away. Then I received my flag through my first binary patch.
