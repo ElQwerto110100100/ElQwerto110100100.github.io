@@ -1,5 +1,5 @@
 ---
-title: Things work out and assembly-binary patching.
+title: First time binary patching,Radare2 and Ghidra.
 tags: CTF binary-patching assembly
 ---
 Today I decided to do another challenge on picoCTF2018, called be-quick-or-be-dead-1. A reverse engineering challenge with a description of,
