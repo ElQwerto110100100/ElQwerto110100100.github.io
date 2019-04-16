@@ -94,6 +94,11 @@ This give us the flag picoCTF{qu4ckm3_9bcb819e}. YAY!
 
 Conlusion:
 
-So this was a unexpected challenge I was prepared to modify some binaries but, instead I got to just figure it out with out any fuss. But like always I made some silly mistakes, for quite awhile doing this challenge I was confused on reversing the ```__s[local_1c] ^ sekrutBuffer[local_1c]``` because I miss took the '^' symbol as a power sign not a binary operation. I am glad that I stuck it though this challenge as that simple silly mistake, made a massive headache were I nearly just looked up a write up to see where I was going wrong but instead I looked on forums and received advice instead of answers that help me relies my mistake.
+So this was a unexpected challenge I was prepared to modify some binaries but, instead I got to just figure it out with out any fuss. But like always I made some silly mistakes, for quite awhile doing this challenge I was confused on reversing the ```__s[local_1c] ^ sekrutBuffer[local_1c]``` because I miss took the '^' symbol as a power sign not a binary operation.
 
-I had fun doing and writing up this challenge. hopefully it helps someone.
+However, I am glad that I stuck it though this challenge as that simple silly mistake, made a massive headache. I nearly gave in to looking at writeup to see where I was going wrong but, instead I looked on forums and received advice instead of answers that help me relies my mistake.
+
+Its a very common problem I keep seeing myself get stuck in (especially writing these posts), were I struggle to stay focus and committed to a challenge like this. I get frustrated easily when I don't know how something works or how to do something but, at less I am aware and improving on this. Which will most defiantly aid me in my development as a hacker.
+
+That's it, I had fun doing and writing up this challenge. hopefully it helps someone.
+Thanks for reading.
