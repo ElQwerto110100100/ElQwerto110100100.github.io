@@ -1,6 +1,6 @@
 ---
 title: quakeme-picoCTF2018-writeup
-tags: CTF binary-patching writeup
+tags: CTF writeup
 ---
 
 Here is a proper writeup of the quakeme problem from picoCTF2018. Lets get quacking...
