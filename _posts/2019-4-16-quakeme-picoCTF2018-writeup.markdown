@@ -8,7 +8,7 @@ Here is a proper writeup of the quakeme problem from picoCTF2018. Lets get quack
 you may want to run the program first but I wont bother for the purpose of this write up.
 First decompile/ disassemble the program with any tool (I will be on the Ghidra bandwagon for the most part) and locate the main function.
 
-![image](/assets\img\Quakeme-0.png)
+![image](/assets\img\posts\Quakeme-0.png)
 
 Disassembling the do_magic() function gives this result.
 
