@@ -1,5 +1,5 @@
 ---
-title: quakeme-picoCTF2018-writeup
+title: Quakeme-picoCTF2018-writeup
 tags: CTF writeup
 ---
 
