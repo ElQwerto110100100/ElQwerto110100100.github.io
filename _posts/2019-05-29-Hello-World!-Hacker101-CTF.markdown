@@ -1,7 +1,7 @@
 ---
 title:  "Hello-World!-Hacker101-CTF"
 date:   2019-05-29 20:0:0 +1100
-tags: CTF Writeup
+tags: CTF writeup
 ---
 So finally have some time to do a CTF. This time I am going to do a challenge on [Hacker101](https://www.hacker101.com/) called Hello World!. lets get started.
 
