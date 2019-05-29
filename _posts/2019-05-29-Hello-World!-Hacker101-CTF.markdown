@@ -6,6 +6,7 @@ tags: CTF writeup
 So finally have some time to do a CTF. This time I am going to do a challenge on [Hacker101](https://www.hacker101.com/) called Hello World!. lets get started.
 
 First thing we are given is this.
+
 ![image](/assets\img\Posts\Hacker101 Hello world\img1.PNG)
 
 When you give it a input it displays it below. The source code of the website showed nothing interesting so I downloaded the binary file and open it up in Ghidra. using the C interpretation functionality I got this output.
