@@ -88,3 +88,17 @@ So the address is 0x00 00 00 00 00 40 06 ee (because the program uses little end
 ![image](/assets\img\Posts\Hacker101 Hello world\img5.PNG)
 
 And that gets us our flag! thanks for reading hopefully it was helpful.
+
+Conclusion:
+
+This CTF was fun but had a lot challenges, luckily with help my mate Ed I was able to get to the end.
+
+First major problem was, use to doing buffer overflow challenges on a shell server or with a standalone program, it was very interesting to deal with this problem on a website, so it took a while of experimenting for me to figure out how to put hex as a input. I figured it out because any special character like, 'backslash' is represented by the hex %5c. so by using the % sign I could indicate my hex values to the stdin.
+
+Another problem was understanding the code, I was trying to find a different problem with the code like a miss spelling or bad function. usually in buffer overflow challenges they use strcpy() or other well know exploitable functions. I tried to look for what was there rather than seeing what wasn't like, the fact there was nothing checking how much data was going into the buffer. There was a check to see if a character was equal to -1 then if would terminate the program but that doesn't provide sufficient security.
+
+In general I struggled to deal with code that was presented differently, the way the characters was added to the buffer using pointers and written in a way that I was not use to, seemed unusual and weird so I thought that a problem had to be there. It was only when my friend Ed asked me questions about the problem and getting me to analysis it in a succinct way did I start to have some things clear up for me.
+
+Another issue was general testing with gdb, there was problems with uses of privileged functions in a docker container that didnt have them activated. But I will be prepared next time.
+
+All in all I've done better on this challenge and learned alot.
