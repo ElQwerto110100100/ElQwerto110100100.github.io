@@ -92,7 +92,7 @@ And that gets us our flag! thanks for reading hopefully it was helpful.
 
 Conclusion:
 
-This CTF was fun but had a lot challenges, luckily with help my mate Ed I was able to get to the end.
+This CTF was fun but had a lot challenges, luckily with help my mate Ed, I was able to get to the end.
 
 First major problem was, use to doing buffer overflow challenges on a shell server or with a standalone program, it was very interesting to deal with this problem on a website, so it took a while of experimenting for me to figure out how to put hex as a input. I figured it out because any special character like, 'backslash' is represented by the hex %5c. so by using the % sign I could indicate my hex values to the stdin.
 
